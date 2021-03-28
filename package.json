@@ -1,0 +1,71 @@
+{
+	"name": "workly",
+	"displayName": "Workly",
+	"icon": "./icons/ext_icon.png",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:workly.start",
+		"onCommand:workly.stop"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "workly.start",
+				"title" : "Start / Stop",
+				"icon" : "./icons/start_stop.svg"
+				
+				
+			},
+			{
+				"command": "workly.stop",
+				"title": "Stop",
+				"icon": "./icons/stop.svg"
+				
+				
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "workly.start",
+					"group": "navigation"
+				
+				}
+				
+			]
+			
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.54.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"exceljs": "^4.2.1"
+	}
+}
