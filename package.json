@@ -3,7 +3,7 @@
 	"displayName": "Workly",
 	"icon": "icons/ext_icon.png",
 	"description": "Workly is a great possibility to track the time you spend coding with next to no effort.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "hiitsme",
 	"repository": {
 		"type": "git",
@@ -24,17 +24,13 @@
 		"commands": [
 			{
 				"command": "workly.start",
-				"title" : "Start / Stop",
-				"icon" : "./icons/start_stop.svg"
-				
-				
+				"title": "Start / Stop",
+				"icon": "./icons/start_stop.svg"
 			},
 			{
 				"command": "workly.stop",
 				"title": "Stop",
 				"icon": "./icons/stop.svg"
-				
-				
 			}
 		],
 		"menus": {
@@ -42,11 +38,8 @@
 				{
 					"command": "workly.start",
 					"group": "navigation"
-				
 				}
-				
 			]
-			
 		}
 	},
 	"scripts": {
