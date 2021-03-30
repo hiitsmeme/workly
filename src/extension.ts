@@ -50,11 +50,11 @@ export function activate(context: vscode.ExtensionContext) {
 		let minutes = get_minutes();
 		stop_time = hour.toString() + ':' + minutes.toString();
 
-		vscode.window.showInformationMessage('Stopping time: ' + stop_time);
+		vscode.window.showInformationMessage('Stopping time:' + stop_time);
 	
 		async function file_name() {
 			filename = await get_file();
-			let to_append = date + ' Start: ' + start_time + ' Stop: ' + stop_time + "\n";
+			let to_append = date + '	Start: ' + start_time + '	Stop: ' + stop_time + "\n";
 			
 			let length = filename?.length;
 			if ((filename[length - 1] === 't') && (filename[length - 2] === 'x') && (filename[length - 3] === 't') && (filename[length - 4] === '.')) {
@@ -63,10 +63,11 @@ export function activate(context: vscode.ExtensionContext) {
 					if (err) {
 						vscode.window.showErrorMessage(err);
 					}
+				vscode.window.showInformationMessage('Appended.')
 				});	
 			}
 			else {
-				vscode.window.showErrorMessage('Not a file path!');
+				vscode.window.showErrorMessage('Not a valid file path! Make sure to use a .txt file!');
 				vscode.commands.executeCommand('workly.stop');
 			}
 		}

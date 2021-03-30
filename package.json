@@ -2,8 +2,9 @@
 	"name": "workly",
 	"displayName": "Workly",
 	"icon": "./icons/ext_icon.png",
-	"description": "",
+	"description": "Workly is a great possibility to track the time you spend coding with next to no effort.",
 	"version": "0.0.1",
+	"publisher": "hiitsme",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
