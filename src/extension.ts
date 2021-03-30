@@ -38,7 +38,7 @@ function get_date() {
 
 function get_file() {
 	let input = vscode.window.showInputBox();
-	vscode.window.showInformationMessage('Enter file name');
+	vscode.window.showInformationMessage('Enter file path');
 	return input;
 }
 
