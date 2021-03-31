@@ -3,7 +3,8 @@ import * as vscode from 'vscode';
 let start_time : string;
 let stop_time : string;
 let date : string;
-let filename : any; 
+let filename : any;
+let log : any; 
 let started = false;
 
 function get_hours() {
@@ -42,6 +43,12 @@ function get_file() {
 	return input;
 }
 
+function get_log() {
+	let input = vscode.window.showInputBox();
+	vscode.window.showInformationMessage('Enter log (voluntary)');
+	return input;
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
 	let stop = vscode.commands.registerCommand('workly.stop', () => {
@@ -54,17 +61,30 @@ export function activate(context: vscode.ExtensionContext) {
 	
 		async function file_name() {
 			filename = await get_file();
-			let to_append = date + '	Start: ' + start_time + '	Stop: ' + stop_time + "\n";
+			log = await get_log();
+			let to_appendLog = date + '    Start: ' + start_time + '    Stop: ' + stop_time + '    Log: ' + log +"\n";
+			let to_append = date + '    Start: ' + start_time + '    Stop: ' + stop_time + "\n";
 			
 			let length = filename?.length;
+			let lengthLog = log?.length;
 			if ((filename[length - 1] === 't') && (filename[length - 2] === 'x') && (filename[length - 3] === 't') && (filename[length - 4] === '.')) {
 				let fs = require('fs');
-				fs.appendFile(filename, to_append, (err: any) => {
-					if (err) {
-						vscode.window.showErrorMessage(err);
-					}
-				vscode.window.showInformationMessage('Appended.')
-				});	
+				if (lengthLog < 1) {
+					fs.appendFile(filename, to_append, (err: any) => {
+						if (err) {
+							vscode.window.showErrorMessage(err);
+						}
+					vscode.window.showInformationMessage('Appended.');
+					});	
+				}
+				else {
+					fs.appendFile(filename, to_appendLog, (err: any) => {
+						if (err) {
+							vscode.window.showErrorMessage(err);
+						}
+					vscode.window.showInformationMessage('Appended.');
+					});
+				}
 			}
 			else {
 				vscode.window.showErrorMessage('Not a valid file path! Make sure to use a .txt file!');
